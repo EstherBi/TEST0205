@@ -1,0 +1,42 @@
+package EstherGroup.EstherArt;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class AutoComplete_practice1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		System.setProperty("webdriver.chrome.driver", "/Applications/chromedriver");
+		
+		 WebDriver driver = new ChromeDriver();
+		 driver.get("https://jqueryui.com/autocomplete/");
+		 System.out.println(driver.findElements(By.tagName("iframe")).size());
+		 driver.switchTo().frame(0);
+		 driver.findElement(By.id("tags")).sendKeys("c");
+		 System.out.println(driver.findElement(By.id("tags")).getAttribute("value"));
+		 driver.findElement(By.id("tags")).sendKeys(Keys.DOWN);
+		 driver.findElement(By.id("tags")).sendKeys(Keys.DOWN);
+		 System.out.println(driver.findElement(By.id("tags")).getAttribute("value"));
+		 
+		 String V= driver.findElement(By.id("tags")).getAttribute("value");
+		 
+		 while(!V.contentEquals("C++")) {
+			 
+			 driver.findElement(By.id("tags")).sendKeys(Keys.DOWN);
+			 V=driver.findElement(By.id("tags")).getAttribute("value");
+			 
+			 
+			 
+			 
+		 }
+		 System.out.println(V);
+		 
+		 
+		 
+	}
+
+}
